@@ -1,5 +1,6 @@
 package com.stocknexus.stocknexus.model.product.add_ons;
 
+import com.stocknexus.stocknexus.dto.product.add_ons.PresentationRegisterData;
 import com.stocknexus.stocknexus.model.product.Product;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -37,5 +38,14 @@ public class Presentation {
             inverseJoinColumns = @JoinColumn(name = "batch_id")
     )
     private List<Batch> batches;
+
+
+    public Presentation(PresentationRegisterData presentationRegisterData, Product product){
+        this.barCode = presentationRegisterData.barCode();
+        this.quantityUnits = presentationRegisterData.quantityUnits();
+        this.presentationType = presentationRegisterData.presentationType();
+        this.product = product;
+
+    }
 
 }

@@ -1,6 +1,7 @@
 package com.stocknexus.stocknexus.model.product;
 
 
+import com.stocknexus.stocknexus.dto.product.ProductRegisterData;
 import com.stocknexus.stocknexus.model.product.add_ons.Category;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,4 +26,11 @@ public class Product {
 
     @Enumerated(EnumType.STRING)
     private Category category;
+
+    public Product(ProductRegisterData productRegisterData) {
+        this.name = productRegisterData.name();
+        this.category = productRegisterData.category();
+        this.lowStockThreshold = Integer.parseInt(productRegisterData.lowStockThreshold());
+
+    }
 }
